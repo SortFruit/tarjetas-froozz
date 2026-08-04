@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arturo Herrera · Froozz IT</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#D6206F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --beige:#F6EFE4;
+  --card:rgba(255,255,255,.6);
+  --card-border:rgba(255,255,255,.8);
+  --ink:#3B2417;
+  --ink-dim:#8A7268;
+  --line:#EAE0D2;
+  --magenta:#D6206F;
+  --magenta-2:#EA5A7E;
+  --magenta-soft:#F7DCE7;
+  --peach:#FFB35C;
+  --peach-2:#FFCB8A;
+  --gold:#FDB913;
+  --gold-2:#FFD466;
+  --coral:#F15A45;
+  --coral-2:#FF8A72;
+  --plum:#6B3358;
+  --plum-2:#8C4C77;
+
+  /* Tema por idioma — por defecto ES (rojo/coral) */
+  --theme:#F15A45;
+  --theme-2:#FF8A72;
+  --theme-soft:#FDE3DD;
+  --theme-border:rgba(241,90,69,.32);
+}
+:root:lang(en){
+  --theme:#E8A93C;
+  --theme-2:#FFD466;
+  --theme-soft:#FCEFC7;
+  --theme-border:rgba(184,121,31,.32);
+}
+:root:lang(fr){
+  --theme:#D6206F;
+  --theme-2:#EA5A7E;
+  --theme-soft:#F7DCE7;
+  --theme-border:rgba(214,32,111,.30);
+}
+:root:lang(it){
+  --theme:#6B3358;
+  --theme-2:#8C4C77;
+  --theme-soft:#EDE0E9;
+  --theme-border:rgba(107,51,88,.30);
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html,body{ margin:0; height:100%; }
+
+body{
+  font-family:'Nunito', sans-serif;
+  background:var(--beige);
+  min-height:100%;
+  display:flex;
+  justify-content:center;
+  padding:40px 18px 56px;
+  color:var(--ink);
+  position:relative;
+  overflow-x:hidden;
+}
+
+.bg-blobs{
+  position:absolute; inset:0; z-index:0;
+  overflow:hidden; pointer-events:none;
+}
+.blob{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:.55;
+}
+.b1{ width:260px; height:260px; background:var(--coral);  top:-60px;  left:-70px; }
+.b2{ width:220px; height:220px; background:var(--gold);   top:40px;   right:-80px; }
+.b3{ width:280px; height:280px; background:var(--magenta); bottom:60px; left:-90px; }
+.b4{ width:240px; height:240px; background:var(--plum);   bottom:-90px; right:-60px; }
+.b5{ width:200px; height:200px; background:var(--peach);  top:45%;    left:40%; opacity:.4; }
+
+.glass-card{ position:relative; z-index:1; }
+
+.glass-card{
+  width:100%;
+  max-width:390px;
+  height:fit-content;
+  background:var(--card);
+  border:1px solid var(--card-border);
+  border-radius:26px;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 20px 45px rgba(59,36,23,.14);
+  padding:22px 24px 26px;
+  text-align:center;
+}
+
+/* ---- LANGUAGE SWITCH ---- */
+.lang-switch{ display:flex; justify-content:flex-end; gap:4px; margin-bottom:14px; }
+.lang-btn{
+  font-family:'Nunito', sans-serif;
+  font-size:10.5px; font-weight:700; letter-spacing:.03em;
+  padding:5px 9px; border-radius:8px;
+  background:rgba(255,255,255,.5); border:1px solid var(--line);
+  color:var(--ink-dim); cursor:pointer;
+  backdrop-filter:blur(6px);
+}
+.lang-btn.is-active{
+  background:var(--theme-soft);
+  border-color:var(--theme-border);
+  color:var(--theme);
+}
+
+/* ---- IDENTITY ---- */
+.avatar-wrap{ position:relative; width:72px; height:72px; margin:6px auto 16px; }
+.avatar{
+  width:72px; height:72px;
+  border-radius:50%;
+  background:linear-gradient(150deg, var(--peach), var(--theme));
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fredoka', sans-serif;
+  font-weight:600; font-size:25px; color:#fff;
+  box-shadow:0 8px 20px rgba(59,36,23,.28);
+}
+h1{
+  font-family:'Fredoka', sans-serif;
+  font-size:21px; font-weight:600; margin:0 0 4px; color:var(--ink);
+}
+.role{
+  font-size:12px; font-weight:800; color:var(--theme);
+  text-transform:uppercase; letter-spacing:.06em; margin:0 0 4px;
+}
+.context{ font-size:12px; color:var(--ink-dim); margin:0 0 10px; }
+.org{ font-size:13px; color:var(--ink-dim); margin:0 0 12px; font-weight:700; }
+.status{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:11px; color:var(--theme); font-weight:700;
+  background:var(--theme-soft);
+  padding:5px 13px; border-radius:20px;
+  margin-bottom:22px;
+}
+.dot{ width:6px; height:6px; border-radius:50%; background:var(--theme); animation:blink 1.8s ease-in-out infinite; flex-shrink:0; }
+@keyframes blink{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+/* ---- PRIMARY CTA: cristal con brillo superior ---- */
+.cta{
+  width:100%; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:16px; border-radius:16px; border:1px solid rgba(255,255,255,.35);
+  background:linear-gradient(135deg, var(--theme), var(--theme-2));
+  color:#fff; font-family:'Nunito',sans-serif;
+  font-weight:800; font-size:15px; cursor:pointer;
+  box-shadow:0 14px 28px rgba(59,36,23,.28), inset 0 1px 0 rgba(255,255,255,.4);
+  margin-bottom:14px;
+  transition:transform .15s ease, background .25s ease;
+  flex-wrap:wrap;
+}
+.cta:active{ transform:scale(.97); }
+.cta svg{ width:18px; height:18px; flex-shrink:0; }
+.cta span{ white-space:normal; position:relative; z-index:1; }
+
+/* ---- SECUNDARIOS: color propio, acabado cristal ---- */
+.icon-row{ display:flex; justify-content:space-between; gap:8px; margin-bottom:14px; }
+.icon-btn{
+  flex:1; min-width:0;
+  display:flex; flex-direction:column; align-items:center; gap:7px;
+  padding:12px 4px 10px;
+  border-radius:16px;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.5);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 10px 20px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.5);
+  opacity:0; transform:translateY(6px);
+  animation:rise .45s ease forwards;
+  animation-delay:var(--d, 0s);
+}
+.icon-btn svg{ width:18px; height:18px; flex-shrink:0; }
+.icon-btn span{ font-size:9.5px; font-weight:800; letter-spacing:.02em; white-space:normal; }
+.icon-btn:active{ transform:scale(.94); }
+
+.ib-call{ background:linear-gradient(150deg, rgba(241,90,69,.62), rgba(255,138,114,.55)); color:#fff; }
+.ib-mail{ background:linear-gradient(150deg, rgba(253,185,19,.62), rgba(255,212,102,.55)); color:var(--ink); }
+.ib-web{ background:linear-gradient(150deg, rgba(255,179,92,.62), rgba(255,203,138,.55)); color:var(--ink); }
+.ib-li{ background:linear-gradient(150deg, rgba(107,51,88,.62), rgba(140,76,119,.55)); color:#fff; }
+
+@keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+
+/* ---- SHARE: cristal neutro ---- */
+.share-btn{
+  width:100%;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px; border-radius:14px;
+  background:rgba(255,255,255,.45);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.6);
+  color:var(--ink-dim); font-family:'Nunito',sans-serif;
+  font-weight:700; font-size:12.5px; cursor:pointer;
+  margin-bottom:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+}
+.share-btn svg{ width:15px; height:15px; }
+.share-btn:active{ transform:scale(.97); }
+.share-btn.copied{ color:var(--theme); border-color:var(--theme-border); }
+
+:lang(fr) .cta span, :lang(it) .cta span{ font-size:13px; }
+:lang(fr) .icon-btn span, :lang(it) .icon-btn span{ font-size:8.5px; }
+:lang(fr) .context, :lang(it) .context{ font-size:11px; }
+
+@media (prefers-reduced-motion: reduce){
+  .icon-btn{ animation:none; opacity:1; transform:none; }
+  .dot{ animation:none; }
+}
+
+footer{
+  text-align:center; font-size:10.5px; color:var(--ink-dim);
+  opacity:.85; letter-spacing:.03em; margin-top:2px; font-weight:700;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-blobs">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+  <span class="blob b5"></span>
+</div>
+
+<div class="glass-card">
+
+  <div class="lang-switch" role="group" aria-label="Idioma / Language">
+    <button class="lang-btn is-active" data-lang="es" type="button">ES</button>
+    <button class="lang-btn" data-lang="en" type="button">EN</button>
+    <button class="lang-btn" data-lang="fr" type="button">FR</button>
+    <button class="lang-btn" data-lang="it" type="button">IT</button>
+  </div>
+
+  <div class="avatar-wrap">
+    <div class="avatar">AH</div>
+  </div>
+
+  <h1>Arturo Herrera</h1>
+  <p class="role" data-i18n="role">IT Administrator</p>
+  <p class="context" data-i18n="context">Infraestructura, soporte y sistemas</p>
+  <p class="org">Froozz Group, S.L.</p>
+  <div class="status"><span class="dot"></span> <span data-i18n="statusText">Soporte IT activo</span></div>
+
+  <button class="cta" id="saveBtn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span data-i18n="cta">Guardar contacto</span>
+  </button>
+
+  <div class="icon-row">
+    <a class="icon-btn ib-call" href="tel:+34611005338" style="--d:0s">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-i18n="call">Llamar</span>
+    </a>
+    <a class="icon-btn ib-mail" href="mailto:arturo.herrera@itfruit.com" style="--d:.06s">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+      <span data-i18n="email">Email</span>
+    </a>
+    <a class="icon-btn ib-web" href="https://www.itfruit.com" target="_blank" rel="noopener" style="--d:.12s">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+      <span data-i18n="web">Web</span>
+    </a>
+    <a class="icon-btn ib-li" href="https://www.linkedin.com/in/arturo-herrera-ortiz-65a543333/" target="_blank" rel="noopener" style="--d:.18s">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.48 1 4.98 2.12 4.98 3.5zM.22 8.24h4.53V23H.22V8.24zM8.03 8.24h4.34v2.01h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.43 3.02 5.43 6.94V23h-4.53v-6.72c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.55V23H8.03V8.24z"/></svg>
+      <span>LinkedIn</span>
+    </a>
+  </div>
+
+  <button class="share-btn" id="shareBtn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    <span data-i18n="share">Compartir</span>
+  </button>
+
+  <footer>Froozz Group, S.L. · itfruit.com</footer>
+</div>
+
+<script>
+(function () {
+  var translations = {
+    es: { role:"IT Administrator", context:"Infraestructura, soporte y sistemas", statusText:"Soporte IT activo", cta:"Guardar contacto", call:"Llamar", email:"Email", web:"Web", share:"Compartir" },
+    en: { role:"IT Administrator", context:"Infrastructure, support & systems", statusText:"IT support active", cta:"Save contact", call:"Call", email:"Email", web:"Website", share:"Share" },
+    fr: { role:"Administrateur systèmes", context:"Infrastructure, support et systèmes", statusText:"Support informatique actif", cta:"Enregistrer le contact", call:"Appeler", email:"E-mail", web:"Site web", share:"Partager" },
+    it: { role:"Amministratore di sistema", context:"Infrastruttura, supporto e sistemi", statusText:"Supporto IT attivo", cta:"Salva contatto", call:"Chiama", email:"Email", web:"Sito web", share:"Condividi" }
+  };
+
+  var themeColors = { es:'#F15A45', en:'#E8A93C', fr:'#D6206F', it:'#6B3358' };
+
+  function setLanguage(lang) {
+    var dict = translations[lang] || translations.es;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key]) { el.textContent = dict[key]; }
+    });
+    document.querySelectorAll('.lang-btn').forEach(function (btn) {
+      btn.classList.toggle('is-active', btn.getAttribute('data-lang') === lang);
+    });
+    document.documentElement.setAttribute('lang', lang);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta && themeColors[lang]) { meta.setAttribute('content', themeColors[lang]); }
+  }
+
+  document.addEventListener('click', function (e) {
+    var langBtn = e.target.closest('.lang-btn');
+    if (langBtn) { setLanguage(langBtn.getAttribute('data-lang')); return; }
+
+    if (e.target.closest('#saveBtn')) {
+      var vcard = "BEGIN:VCARD\r\nVERSION:3.0\r\nN:Herrera Ortiz;Arturo;;;\r\nFN:Arturo Herrera\r\nORG:Froozz Group, S.L.\r\nTITLE:IT Administrator\r\nTEL;TYPE=CELL,VOICE:+34611005338\r\nEMAIL;TYPE=INTERNET,WORK:arturo.herrera@itfruit.com\r\nURL;TYPE=WORK:https://www.itfruit.com\r\nitem1.URL:https://www.linkedin.com/in/arturo-herrera-ortiz-65a543333/\r\nitem1.X-ABLabel:LinkedIn\r\nEND:VCARD\r\n";
+      var blob = new Blob([vcard], { type: "text/vcard" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = "arturo_herrera.vcf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      return;
+    }
+
+    var shareBtn = e.target.closest('#shareBtn');
+    if (shareBtn) {
+      var shareData = {
+        title: "Arturo Herrera · Froozz Group",
+        text: "Contacto de Arturo Herrera (IT Administrator, Froozz Group, S.L.)",
+        url: window.location.href
+      };
+      if (navigator.share) {
+        navigator.share(shareData).catch(function () {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(shareData.url).then(function () {
+          var label = shareBtn.querySelector('span');
+          var original = label.textContent;
+          shareBtn.classList.add('copied');
+          label.textContent = 'Enlace copiado';
+          setTimeout(function () {
+            shareBtn.classList.remove('copied');
+            label.textContent = original;
+          }, 1800);
+        });
+      }
+    }
+  });
+
+  setLanguage('es');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Álvaro Blas",
+    "role": "Orders &amp; Logistics Manager",
+    "slug": "Alvaro-Blas"
+  },
+  {
+    "name": "Arturo Herrera",
+    "role": "IT Administrator",
+    "slug": "Arturo-Herrera"
+  },
+  {
+    "name": "Carlos Delgado",
+    "role": "General Manager",
+    "slug": "Carlos-Delgado"
+  },
+  {
+    "name": "Carlos Ventura",
+    "role": "Production Assistant",
+    "slug": "Carlos-Ventura"
+  },
+  {
+    "name": "Celia Peris",
+    "role": "Quality Specialist",
+    "slug": "Celia-Peris"
+  },
+  {
+    "name": "Dani Tamarit",
+    "role": "Key Account Manager — Portugal, España, UK",
+    "slug": "Dani-Tamarit"
+  },
+  {
+    "name": "Diana Hernández",
+    "role": "Sales &amp; Operations Planner",
+    "slug": "Diana-Hernandez"
+  },
+  {
+    "name": "Elia López",
+    "role": "Accounts Receivable &amp; Payable Specialist",
+    "slug": "Elia-Lopez"
+  },
+  {
+    "name": "Estefanía Aracil",
+    "role": "Administrativa de Recepción y Logística",
+    "slug": "Estefania-Aracil"
+  },
+  {
+    "name": "Ferrán Martínez",
+    "role": "Finance Assistant",
+    "slug": "Ferran-Martinez"
+  },
+  {
+    "name": "José Vicente Font",
+    "role": "Chief Executive Officer",
+    "slug": "Jose-Vicente-Font"
+  },
+  {
+    "name": "Juan Carlos Vitar",
+    "role": "Industrial Maintenance Manager",
+    "slug": "Juan-Carlos-Vitar"
+  },
+  {
+    "name": "Lucía Rodríguez",
+    "role": "Marketing and Content Coordinator",
+    "slug": "Lucia-Rodriguez"
+  },
+  {
+    "name": "Mathilde Foucaud",
+    "role": "Product Develop. &amp; Client Manag. Specialist",
+    "slug": "Mathilde-Foucaud"
+  },
+  {
+    "name": "Pablo Muñoz",
+    "role": "Key Account Manager — France",
+    "slug": "Pablo-Munoz"
+  },
+  {
+    "name": "Pablo Ruiz",
+    "role": "Quality Assistant",
+    "slug": "Pablo-Ruiz"
+  },
+  {
+    "name": "Pepe Cots",
+    "role": "Purchases &amp; Logistics Coordinator",
+    "slug": "Pepe-Cots"
+  },
+  {
+    "name": "Raquel Lizandra",
+    "role": "Finance &amp; Accounting Analyst",
+    "slug": "Raquel-Lizandra"
+  },
+  {
+    "name": "Raúl Pérez",
+    "role": "Technical Assistant",
+    "slug": "Raul-Perez"
+  },
+  {
+    "name": "Susana Carrasco",
+    "role": "Head of Production &amp; R&amp;D",
+    "slug": "Susana-Carrasco"
+  },
+  {
+    "name": "Víctor Raga",
+    "role": "Orders &amp; Logistics Assistant",
+    "slug": "Victor-Raga"
+  }
+]

@@ -1,0 +1,23 @@
+name: Actualizar directorio de tarjetas
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  build-directory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generar people.json
+        run: python3 .github/scripts/build_people.py
+
+      - name: Commit si hay cambios
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Actualizar directorio automáticamente"
+          file_pattern: people.json

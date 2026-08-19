@@ -265,7 +265,7 @@ footer{
   </div>
 
   <h1>Celia Peris</h1>
-  <p class="role">Quality Specialist</p>
+  <p class="role">Quality Manager</p>
   <p class="org">Froozz Group, S.L.</p>
   <div class="status"><span class="dot"></span> <span data-i18n="statusText">Disponible</span></div>
 
@@ -326,7 +326,7 @@ footer{
     if (langBtn) { setLanguage(langBtn.getAttribute('data-lang')); return; }
 
     if (e.target.closest('#saveBtn')) {
-      var vcard = "BEGIN:VCARD\r\nVERSION:3.0\r\nN:Peris;Celia;;;\r\nFN:Celia Peris\r\nORG:Froozz Group, S.L.\r\nTITLE:Quality Specialist\r\nTEL;TYPE=CELL,VOICE:+34634366180\r\nEMAIL;TYPE=INTERNET,WORK:Celia.Peris@itfruit.com\r\nURL;TYPE=WORK:https://www.itfruit.com\r\nEND:VCARD\r\n";
+      var vcard = "BEGIN:VCARD\r\nVERSION:3.0\r\nN:Peris;Celia;;;\r\nFN:Celia Peris\r\nORG:Froozz Group, S.L.\r\nTITLE:Quality Manager\r\nTEL;TYPE=CELL,VOICE:+34634366180\r\nEMAIL;TYPE=INTERNET,WORK:Celia.Peris@itfruit.com\r\nURL;TYPE=WORK:https://www.itfruit.com\r\nEND:VCARD\r\n";
       var blob = new Blob([vcard], { type: "text/vcard" });
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
@@ -343,7 +343,7 @@ footer{
     if (shareBtn) {
       var shareData = {
         title: "Celia Peris · Froozz Group",
-        text: "Contacto de Celia Peris (Quality Specialist, Froozz Group, S.L.)",
+        text: "Contacto de Celia Peris (Quality Manager, Froozz Group, S.L.)",
         url: window.location.href
       };
       if (navigator.share) {

@@ -98,7 +98,15 @@ body{
   text-align:center;
 }
 
-.lang-switch{ display:flex; justify-content:flex-end; gap:4px; margin-bottom:14px; }
+.lang-switch{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+.lang-group{ display:flex; gap:4px; }
+.home-btn{
+  display:flex; align-items:center; justify-content:center;
+  width:30px; height:30px; border-radius:9px;
+  background:rgba(255,255,255,.5); border:1px solid var(--line);
+  color:var(--ink-dim); backdrop-filter:blur(6px); text-decoration:none;
+}
+.home-btn svg{ width:15px; height:15px; }
 .lang-btn{
   font-family:'Nunito', sans-serif;
   font-size:10.5px; font-weight:700; letter-spacing:.03em;
@@ -241,10 +249,15 @@ footer{
 <div class="glass-card">
 
   <div class="lang-switch" role="group" aria-label="Idioma / Language">
-    <button class="lang-btn is-active" data-lang="es" type="button">ES</button>
-    <button class="lang-btn" data-lang="en" type="button">EN</button>
-    <button class="lang-btn" data-lang="fr" type="button">FR</button>
-    <button class="lang-btn" data-lang="it" type="button">IT</button>
+    <a class="home-btn" href="/" aria-label="Volver al directorio" title="Volver al directorio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </a>
+    <div class="lang-group">
+      <button class="lang-btn is-active" data-lang="es" type="button">ES</button>
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
+      <button class="lang-btn" data-lang="fr" type="button">FR</button>
+      <button class="lang-btn" data-lang="it" type="button">IT</button>
+    </div>
   </div>
 
   <div class="avatar-wrap">
@@ -252,7 +265,7 @@ footer{
   </div>
 
   <h1>Susana Carrasco</h1>
-  <p class="role">Head of Production &amp; R&amp;D</p>
+  <p class="role">Orders &amp; Logistics Assistant</p>
   <p class="org">Froozz Group, S.L.</p>
   <div class="status"><span class="dot"></span> <span data-i18n="statusText">Disponible</span></div>
 
@@ -313,7 +326,7 @@ footer{
     if (langBtn) { setLanguage(langBtn.getAttribute('data-lang')); return; }
 
     if (e.target.closest('#saveBtn')) {
-      var vcard = "BEGIN:VCARD\r\nVERSION:3.0\r\nN:Carrasco;Susana;;;\r\nFN:Susana Carrasco\r\nORG:Froozz Group, S.L.\r\nTITLE:Head of Production & R&D\r\nTEL;TYPE=CELL,VOICE:+34744252970\r\nEMAIL;TYPE=INTERNET,WORK:susana.carrasco@itfruit.com\r\nURL;TYPE=WORK:https://www.itfruit.com\r\nEND:VCARD\r\n";
+      var vcard = "BEGIN:VCARD\r\nVERSION:3.0\r\nN:Carrasco;Susana;;;\r\nFN:Susana Carrasco\r\nORG:Froozz Group, S.L.\r\nTITLE:Orders & Logistics Assistant\r\nTEL;TYPE=CELL,VOICE:+34744252970\r\nEMAIL;TYPE=INTERNET,WORK:susana.carrasco@itfruit.com\r\nURL;TYPE=WORK:https://www.itfruit.com\r\nEND:VCARD\r\n";
       var blob = new Blob([vcard], { type: "text/vcard" });
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
@@ -330,7 +343,7 @@ footer{
     if (shareBtn) {
       var shareData = {
         title: "Susana Carrasco · Froozz Group",
-        text: "Contacto de Susana Carrasco (Head of Production & R&D, Froozz Group, S.L.)",
+        text: "Contacto de Susana Carrasco (Orders & Logistics Assistant, Froozz Group, S.L.)",
         url: window.location.href
       };
       if (navigator.share) {
